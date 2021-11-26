@@ -1,0 +1,1 @@
+currentTemplate = localStorage.getItem("currentTemplate")

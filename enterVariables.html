@@ -25,10 +25,9 @@
 
     <!-- Custom styles for this template-->
     <link href="css/index.min.css" rel="stylesheet" />
-    <link href="css/chooseVariables.css" rel="stylesheet" />
-    <script src="js/chooseVariables.js" ?></script>
+    <link href="css/enterVariables.css" rel="stylesheet" />
   </head>
-
+  
   <body id="page-top">
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -40,7 +39,7 @@
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
-        apiKey: "AIzaSyA_mJxfRO004Jn031T5-YvxyPZLXm37fFA",
+        apiKey: "censored",
         authDomain: "certgen-327709.firebaseapp.com",
         projectId: "certgen-327709",
         storageBucket: "certgen-327709.appspot.com",
@@ -109,7 +108,7 @@
           >
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Certificate :</h6>
-              <a class="collapse-item" href="templates.html">
+              <a class="collapse-item active" href="templates.html">
                 <i class="fa fa-align-left"></i><span> Templates</span></a
               >
               <a class="collapse-item" href="#">
@@ -119,7 +118,7 @@
 
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Template :</h6>
-              <a class="collapse-item active" href="chooseVariables.html">
+              <a class="collapse-item" href="chooseVariables.html">
                 <i class="fa fa-align-left"></i><span> Format</span></a
               >
               <a class="collapse-item" href="#">
@@ -251,88 +250,24 @@
             <div
               class="d-sm-flex align-items-center justify-content-between mb-4"
             >
-              <h1 class="h2 mb-0 text-gray-800">Template creation</h1>
+              <h1 class="h2 mb-0 text-gray-800">Enter variable values</h1>
             </div>
 
-            <hr />
-            <!-- Content Row -->
+            <hr>
 
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h4 mb-0 text-gray-800 align-items-center">Select fields</h1>
-            </div>
-            <input type="text" id="name" class="form-control mb-4 mx-2" placeholder="Name of the template"></input>
-            <div class="row px-2 mb-3">
-              <div class="col-md-10">
-                <div class="form-group shadow-textarea">
-                  <textarea
-                    id="format"
-                    class="form-control z-depth-5"
-                    rows="12"
-                    placeholder="Write something.."
-                  ></textarea>
+            <!-- Template card example -->
+            
+
+            <div id="templateCardPool" class="container-lg">
+              <!-- <div id="defaultCard" class="card bg-dark shadow-lg mb-3" style="max-width: 20rem;">
+                <div class="card-header text-black-50" style="background-color: white;">Header</div>
+                <div class="card-body text-white">
+                  <h5 class="card-title">Certificate of Appreciation</h5>
+                  <p class="card-text text-white">Some quick example text to build on the panel title and make up the bulk of the
+                    panel's content.</p>
                 </div>
-              </div>
-
-              <div class="col-md-2">
-                <button
-                  type="button"
-                  class="btn btn-primary mx-1 my-1"
-                  id="add"
-                  onclick="selectedTextButton()"
-                >
-                  Add
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-danger mx-1 my-1"
-                  id="undo"
-                  onclick="undoButton()"
-                >
-                  Undo
-                </button>
-
-                <div class="d-sm-none">
-                  <hr />
-                </div>
-              </div>
+              </div> -->
             </div>
-            <div id="buttonPool" class="py-1 px-1"></div>
-
-            <div class="row px-3 mb-3">
-              <label class="form-label" for="imageUpload"
-                >Upload Background Image</label
-              >
-              <input
-                type="file"
-                class="form-control pb-5"
-                id="imageUpload"
-                accept="image/*"
-              />
-            </div>
-
-            <button
-              type="button"
-              class="btn btn-success mx-1 my-1"
-              id="undo"
-              onclick="confirmTemplate()"
-            >
-              Proceed
-            </button>
-
-            <button
-              type="button"
-              class="btn btn-danger mx-1 my-1"
-              id="undo"
-              onclick="clearLocalStorage()"
-            >
-              Clear Templates
-            </button>
-
-            <!-- Content Column -->
-          </div>
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
@@ -404,6 +339,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/index.min.js"></script>
+    <script src="js/enterVariables.js"></script>
 
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>

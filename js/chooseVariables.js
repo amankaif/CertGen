@@ -4,10 +4,21 @@ var idCount = 1;
 var buttonIdArr = [];
 var format = "";
 
-window.localStorage;
+
+
+if (localStorage.getItem("templates") == null) {
+  console.log("reset localStorage");
+  localStorage.setItem("templates", JSON.stringify([]));
+} else {
+  var templatesArray = JSON.parse(localStorage.getItem("templates"));
+  console.log(templatesArray);
+}
+console.log("initial check");
+console.log(JSON.parse(localStorage.getItem("templates")));
 
 class Template {
-  constructor(format, variables, image) {
+  constructor(name, format, variables, image) {
+    this.name = name;
     this.format = format;
     this.variables = variables;
     this.image = image;
@@ -43,7 +54,6 @@ var selectedTextButton = function getSelectedTextToButton() {
     btn.className = "btn btn-info mx-2 variableButton";
     idCount++;
     buttonIdArr.push(btn.id);
-    console.log(buttonIdArr);
     // btn.onclick = removeButton();
     document.getElementById("buttonPool").appendChild(btn);
     selectedText = null;
@@ -62,18 +72,45 @@ var undoButton = function () {
   }
 };
 
-var confirmVariables = function () {
-  var format = document.getElementById("format").value;
-  if (varArr.length > 0 && format.trim().length > 0) {
-    if (confirm("Proceed to create template?")) {
-      console.log(varArr, format);
-    }
-  }
-  else{
-    alert("Choose at least one variable or valid format");
-  }
-};
+var confirmTemplate = function () {
+  templatesArray = JSON.parse(localStorage.getItem("templates"));
 
+  var name = document.getElementById("name").value
+  var format = document.getElementById("format").value;
+  var image = document.getElementById("imageUpload").files[0];
+  if (varArr.length > 0 && format.trim().length > 0) {
+    let namesArr = templatesArray.map((obj) => {obj});
+    console.log(templatesArray);
+    console.log("This is the array of all the names of the templates")
+    console.log(namesArr);
+
+    // TODO: Fix name duplication
+    if (namesArr.includes(name)){
+      alert("Name already taken");
+    }
+    else{
+    if (confirm("Proceed to create template?")) {
+      console.log(varArr, format, image);
+      localStorage.setItem(
+        "templates",
+        JSON.stringify(
+          JSON.parse(localStorage.getItem("templates")).concat([
+            new Template(name, format, varArr, image),
+          ])
+        )
+      );
+      console.log("check after update");
+      console.log(JSON.parse(localStorage.getItem("templates")));
+
+      removeAllChildNodes(document.getElementById("buttonPool"));
+    }
+  } 
+}
+else {
+  alert("Choose at least one variable or valid format");
+}};
+
+varArr.push;
 //TODO: Fix the menu collapsing when clicked anywhere.
 
 var collapseCollapsible = function (event) {
@@ -85,3 +122,14 @@ var collapseCollapsible = function (event) {
     $collapsible.collapse("toggle");
   }
 };
+
+var removeAllChildNodes = function(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
+function clearLocalStorage() {
+  localStorage.setItem("templates", JSON.stringify([]));
+  console.log(JSON.parse(localStorage.getItem("templates")));
+}
