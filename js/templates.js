@@ -28,7 +28,7 @@ function createTemplateCards() {
     useButton.id = template.name;
     useButton.href = "enterVariables.html";
     useButton.className = "btn btn-primary";
-    useButton.innerHTML = "UseButton";
+    useButton.innerHTML = "Use";
     // useButton.onclick = currentTemplateSetter;
     useButton.addEventListener("click", function () {
       localStorage.setItem("currentTemplate", useButton.id);
@@ -60,3 +60,5 @@ function currentTemplateSetter(id) {
   console.log(localStorage.getItem("currentTemplate"));
   // return true;
 }
+
+

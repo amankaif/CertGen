@@ -5,7 +5,6 @@ var buttonIdArr = [];
 var format = "";
 
 
-
 if (localStorage.getItem("templates") == null) {
   console.log("reset localStorage");
   localStorage.setItem("templates", JSON.stringify([]));
@@ -79,12 +78,11 @@ var confirmTemplate = function () {
   var format = document.getElementById("format").value;
   var image = document.getElementById("imageUpload").files[0];
   if (varArr.length > 0 && format.trim().length > 0) {
-    let namesArr = templatesArray.map((obj) => {obj});
+    let namesArr = templatesArray.map((obj) => obj.name);
     console.log(templatesArray);
     console.log("This is the array of all the names of the templates")
     console.log(namesArr);
 
-    // TODO: Fix name duplication
     if (namesArr.includes(name)){
       alert("Name already taken");
     }
@@ -110,7 +108,6 @@ else {
   alert("Choose at least one variable or valid format");
 }};
 
-varArr.push;
 //TODO: Fix the menu collapsing when clicked anywhere.
 
 var collapseCollapsible = function (event) {
@@ -133,3 +130,4 @@ function clearLocalStorage() {
   localStorage.setItem("templates", JSON.stringify([]));
   console.log(JSON.parse(localStorage.getItem("templates")));
 }
+

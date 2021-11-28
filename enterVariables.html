@@ -254,20 +254,29 @@
             </div>
 
             <hr>
-
-            <!-- Template card example -->
             
 
-            <div id="templateCardPool" class="container-lg">
-              <!-- <div id="defaultCard" class="card bg-dark shadow-lg mb-3" style="max-width: 20rem;">
-                <div class="card-header text-black-50" style="background-color: white;">Header</div>
-                <div class="card-body text-white">
-                  <h5 class="card-title">Certificate of Appreciation</h5>
-                  <p class="card-text text-white">Some quick example text to build on the panel title and make up the bulk of the
-                    panel's content.</p>
-                </div>
-              </div> -->
+            <div class="row px-3 mb-3">
+              <label class="form-label" for="csvUpload"
+                >Upload csv</label
+              >
+              <input
+                type="file"
+                class="form-control pb-5"
+                id="csvUpload"
+                accept=".csv"
+              />
             </div>
+
+            <button
+              type="button"
+              class="btn btn-success mx-1 my-1"
+              id="downloadButton"
+              onclick="serveDownloads()"
+            >
+              Proceed
+            </button>
+
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
