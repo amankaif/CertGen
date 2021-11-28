@@ -14,8 +14,8 @@ function createTemplateCards() {
     // id of card is the name of the template
     card.id = template.name;
     let cardHeader = document.createElement("div");
-    cardHeader.className = "card-header text-black-50";
-    cardHeader.style = "background-color: white;";
+    cardHeader.className = "card-header bg-primary text-white";
+    // cardHeader.style = "background-color: white;";
     let cardBody = document.createElement("div");
     cardBody.className = "card-body text-white";
     let cardTitle = document.createElement("h5");

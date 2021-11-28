@@ -2,10 +2,8 @@ var templatesArray = JSON.parse(localStorage.getItem("templates"));
 var currentTemplate = localStorage.getItem("currentTemplate");
 const reader = new FileReader();
 
-console.log(templatesArray);
 
 for (template in templatesArray) {
-  console.log(template, currentTemplate);
   if (templatesArray[template].name == currentTemplate) {
     currentTemplate = templatesArray[template];
   }
@@ -19,6 +17,7 @@ function serveDownloads() {
   downloadURL("data:text/html,"+currentTemplate.format, currentTemplate.name+"_"+"format.txt");
   // downloadURI(reader.readAsText(csv), "csv.txt");
   downloadURL(window.URL.createObjectURL(csv), currentTemplate.name + "_csv.csv");
+
 }
 
 function downloadURL(url, name) {
@@ -30,4 +29,20 @@ function downloadURL(url, name) {
   document.body.removeChild(link);
   // delete link;
 }
+
+function createVariableButtons() {
+  for (variableNo in currentTemplate.variables) {
+    console.log("variable");
+    console.log(variableNo);
+    let btn = document.createElement("button");
+    btn.innerHTML = currentTemplate.variables[variableNo];
+    btn.className = "btn btn-info mx-2 variableButton";
+    // btn.onclick = removeButton();
+    document.getElementById("buttonPool").appendChild(btn);
+    
+  }
+}
+
+
+createVariableButtons();
 
